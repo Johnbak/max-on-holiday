@@ -20,6 +20,7 @@ export default function Home() {
           <p className="nes-balloon from-left nes-pointer">
             Hi, I'm not a Pokémon trainer, but I'm a software developer.
           </p>
+          <br />
           <i className="nes-ash"></i>
         </section>
 
