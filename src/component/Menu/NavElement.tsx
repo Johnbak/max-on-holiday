@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Menu, PrimaryNav, MenuLink, Hamburger } from './Nav'
+import { useOutsideAlerter } from '../utils';
 
 const Navbar = () => {
+  const hamburgurIconRef = useRef(null);
+  const [hamburger, setHamburger] = useState(false);
+
+
+  useOutsideAlerter(hamburgurIconRef, () => {
+    if (hamburger) {
+      setHamburger(false);
+    }
+  });
+
+
+  const handleHamburgerClick = () => {
+    setHamburger((prevHamburger) => !prevHamburger);
+  };
+
   return (
     <PrimaryNav>
       <Menu>
@@ -18,18 +34,30 @@ const Navbar = () => {
           Blog
         </MenuLink>
       </Menu>
-      <Hamburger className="snes-jp-logo" >
-        <div style={{
-          width: "120px",
-          height: "180px",
-          right: 20,
-          top: 140,
-          backgroundColor: "red",
-          position: "absolute",
-          zIndex: "900"
-        }}>
+      <div style={{
+        position: "relative",
+        alignSelf: "center"
+      }}>
+        <Hamburger
+          ref={hamburgurIconRef}
+          className="snes-jp-logo"
+          onClick={handleHamburgerClick} />
+        <div
+          style={{
+            width: "120px",
+            height: "180px",
+            right: -16,
+            top: 140,
+            backgroundColor: "red",
+            position: "absolute",
+            zIndex: "900",
+            display: 'flex',
+            opacity: hamburger ? 1 : 0,
+            transition: 'opacity 0.5s ease-in-out',  // When the hamburger state is true, the opacity is set to 1, making the div visible with a fade-in effect. When the hamburger state is false, the opacity
+          }}>
         </div>
-      </Hamburger >
+      </div>
+
     </PrimaryNav>
 
   )

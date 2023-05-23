@@ -32,12 +32,11 @@ export const Hamburger = styled.i`
   font-size: 1.9rem;
   cursor: pointer;
   padding : 10px;
-  align-self: center;
-  position : relative;
 
   &:hover {
     transform: scale(1.3);
-    transition : 0.2s all;
+    transform-origin: center;
+    transition: 0.2s all;
   }
   @media screen and (min-width: 769px) {
     display: none; 
