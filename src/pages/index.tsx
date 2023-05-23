@@ -1,137 +1,25 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+import styled from 'styled-components';
 
-const inter = Inter({ subsets: ["latin"] });
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: red;
+`;
 
 export default function Home() {
   return (
-    <>
-      <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By dsadasdasds1111a{" "}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-
-              <div className="lists">
-                <ul className="nes-list is-disc">
-                  <li>Good morning.</li>
-                  <li>Thou hast had a good night's sleep, I hope.</li>
-                  <li>Thou hast had a good afternoon</li>
-                  <li>Good night.</li>
-                </ul>
-              </div>
-
-              <div className="lists">
-                <ul className="nes-list is-circle">
-                  <li>Good morning.</li>
-                  <li>Thou hast had a good night's sleep, I hope.</li>
-                  <li>Thou hast had a good afternoon</li>
-                  <li>Good night.</li>
-                </ul>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-
-          <section className="icon-list">
-            <i className="nes-mario"></i>
-            <i className="nes-ash"></i>
-            <i className="nes-pokeball"></i>
-            <i className="nes-bulbasaur"></i>
-            <i className="nes-charmander"></i>
-            <i className="nes-squirtle"></i>
-            <i className="nes-kirby"></i>
-          </section>
-        </div>
-
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-    </>
+    <Container>
+      <h1>Centered Container !!</h1>
+      <div>
+        <button type="button" className="nes-btn is-primary">Primary</button>
+        <button type="button" className="nes-btn is-success">Success</button>
+        <button type="button" className="nes-btn is-warning">Warning</button>
+        <button type="button" className="nes-btn is-error">Error</button>
+        <button type="button" className="nes-btn is-disabled">Disabled</button>
+      </div>
+    </Container>
   );
 }
+
