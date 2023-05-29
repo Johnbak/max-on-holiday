@@ -21,6 +21,7 @@ export const MenuLink = styled.a`
   text-decoration: none !important;
   padding: 0 1.8rem;
   height: 100%;
+  transition: 0.2s all cubic-bezier(0.22, 0.61, 0.36, 1); //when scale back
   &:hover {
     transform: scale(1.3);
     transform-origin: center;
@@ -32,7 +33,7 @@ export const MenuLink = styled.a`
 export const Hamburger = styled.i`
   display: block;
   font-size: 1.9rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   padding: 10px;
 
   &:hover {

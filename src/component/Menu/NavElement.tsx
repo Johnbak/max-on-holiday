@@ -49,8 +49,8 @@ const Navbar = () => {
       <Menu>
         <MenuLink href="/home">Home</MenuLink>
         <MenuLink href="/about">About</MenuLink>
-        <MenuLink href="/products">Products</MenuLink>
-        <MenuLink href="/blog">Blog</MenuLink>
+        <MenuLink href="/products">Experience</MenuLink>
+        <MenuLink href="/blog">Skill</MenuLink>
       </Menu>
       <div
         style={{
@@ -72,7 +72,7 @@ const Navbar = () => {
             top: 100,
             position: "absolute",
             zIndex: "900",
-            display: "flex",
+            display: hamburger ? "flex" : "none",
             opacity: hamburger ? 1 : 0,
             borderRadius: "10px",
             transition: "opacity 0.5s ease-in-out", // When the hamburger state is true, the opacity is set to 1, making the div visible with a fade-in effect. When the hamburger state is false, the opacity
@@ -81,8 +81,8 @@ const Navbar = () => {
           <div className="lists">
             <NavItem>Home</NavItem>
             <NavItem>About</NavItem>
-            <NavItem>Products</NavItem>
-            <NavItem>Blog</NavItem>
+            <NavItem>Experience</NavItem>
+            <NavItem>Skill</NavItem>
             <NavItem>Click me</NavItem>
           </div>
         </div>
