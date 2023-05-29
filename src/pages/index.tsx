@@ -46,7 +46,8 @@ const skill = [];
 
 export default function Home() {
   const [visible, setVisible] = useState(false);
-
+  const message =
+    "Hi , I'm not a Pokémon trainer , but I'm a software developer.";
   useEffect(() => {
     // const handleScroll = () => {
     //   const scrollPosition = window.scrollY;
@@ -62,9 +63,7 @@ export default function Home() {
     return (
       <section id="home" className="nes-container with-title">
         <h3 className="title">Hello</h3>
-        <p className="nes-balloon from-left nes-pointer">
-          Hi, I'm not a Pokémon trainer, but I'm a software developer.
-        </p>
+        <p className="nes-balloon from-left nes-pointer">{message}</p>
         <br />
         <i className="nes-ash"></i>
       </section>
