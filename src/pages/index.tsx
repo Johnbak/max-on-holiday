@@ -196,7 +196,7 @@ export default function Home() {
       ></WrapSlideMasqot> */}
       <div
         style={{
-          height: "200vh",
+          // height: "100vh",
           paddingTop: "32px",
           display: "flex",
           flexDirection: "column",
