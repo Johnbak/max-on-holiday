@@ -16,6 +16,7 @@ const Collapse = (props: ICollapse) => {
   const ListCustom = styled.li`
     &::before {
       color: #dcdcdc !important;
+      top: calc(0%) !important; //move bullet to top
     }
   `;
 
@@ -40,7 +41,7 @@ const Collapse = (props: ICollapse) => {
       }}
     >
       <section id="experience" className="nes-container with-title">
-        <section>
+        <section style={{ paddingBottom: "24px" }}>
           <p>{companyName}</p>
           <p>{position}</p>
           <p>{period}</p>

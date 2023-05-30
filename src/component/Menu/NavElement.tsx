@@ -5,9 +5,13 @@ import styled from "styled-components";
 
 const Navbar = () => {
   const hamburgurIconRef = useRef(null);
+  const hamburgurBlockRef = useRef(null);
   const [hamburger, setHamburger] = useState(false);
 
-  useOutsideAlerter(hamburgurIconRef, () => {
+  // TODO:: Future refactor
+  // hamburgurIconRef is icon Hamburgur
+  // hamburgurBlockRef is block black Hamburgur
+  useOutsideAlerter(hamburgurIconRef, hamburgurBlockRef, () => {
     if (hamburger) {
       setHamburger(false);
     }
@@ -29,8 +33,8 @@ const Navbar = () => {
       //Arrow
       display: none;
       position: absolute;
-      bottom: -0px;
-      right: -100px;
+      bottom: 3px;
+      right: -70px;
       content: "";
       order: 2;
       transform: rotate(180deg);
@@ -44,13 +48,21 @@ const Navbar = () => {
     }
   `;
 
+  const scrollToDiv = (divId: string) => {
+    const divElement = document.getElementById(divId);
+    if (divElement) {
+      const offset = divElement.offsetTop - 120; //100px is Navbar size
+      window.scrollTo({ top: offset, behavior: "smooth" });
+    }
+  };
+
   return (
     <PrimaryNav>
       <Menu>
-        <MenuLink href="/home">Home</MenuLink>
-        <MenuLink href="/about">About</MenuLink>
-        <MenuLink href="/products">Experience</MenuLink>
-        <MenuLink href="/blog">Skill</MenuLink>
+        <MenuLink onClick={() => scrollToDiv("home")}>Home</MenuLink>
+        <MenuLink onClick={() => scrollToDiv("about")}>About</MenuLink>
+        <MenuLink onClick={() => scrollToDiv("exp")}>Experience</MenuLink>
+        <MenuLink onClick={() => scrollToDiv("skill")}>Skill</MenuLink>
       </Menu>
       <div
         style={{
@@ -64,6 +76,7 @@ const Navbar = () => {
           onClick={handleHamburgerClick}
         />
         <div
+          ref={hamburgurBlockRef}
           className="nes-container is-rounded is-dark"
           style={{
             width: "280px",
@@ -79,11 +92,10 @@ const Navbar = () => {
           }}
         >
           <div className="lists">
-            <NavItem>Home</NavItem>
-            <NavItem>About</NavItem>
-            <NavItem>Experience</NavItem>
-            <NavItem>Skill</NavItem>
-            <NavItem>Click me</NavItem>
+            <NavItem onClick={() => scrollToDiv("home")}>Home</NavItem>
+            <NavItem onClick={() => scrollToDiv("about")}>About</NavItem>
+            <NavItem onClick={() => scrollToDiv("exp")}>Experience</NavItem>
+            <NavItem onClick={() => scrollToDiv("skill")}>Skill</NavItem>
           </div>
         </div>
         {/* <div

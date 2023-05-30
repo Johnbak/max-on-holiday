@@ -12,37 +12,53 @@ const exp = [
     position: "Software Developer",
     period: "Jan 2021 - Present",
     exp: [
-      "Java Spring Boot",
-      "Next.js",
-      "React.js",
-      "TypeScript",
-      "JavaScript",
-      "CSS",
-      "HTML",
-      "Node.js",
+      "Converting UX/UI requirements into usable code",
+      "Collaborate with UX designers and back-end developers to implement features and fix",
+      "Responsible for developing the frontend using Next.js",
+      "Implemented responsive design and optimized the website for different devices and screen sizes",
+      "Responsible for developing an API that follows the business flow using Java Spring Boot and NodeJs",
     ],
   },
   {
     companyName: "Bluecode Global Company Limited",
     position: "Software Developer",
     period: "Jan 2020 - Dec 2020 · 1 yr",
-    exp: ["Java", "Python", "Docker"],
+    exp: [
+      "Developed RESTful API applications using Python.",
+      "Developed a mobile application in Java that schedules tasks using WorkManager to run in the background",
+      "Utilized Docker, a software container, to set up Docker on DigitalOcean's Linux platform",
+    ],
   },
   {
     companyName: "Vertice International Co. Ltd.",
     position: "Software Developer",
     period: "Feb 2018 - Dec 2019 · 1 yr 11 mos",
-    exp: ["Java Spring Boot"],
+    exp: [
+      "Responsible for developing a Java Spring Boot API that follows the business flow",
+      "Design and consistently adhere to good programming practices for the project.",
+    ],
   },
   {
     companyName: "Aware Group",
     position: "Java Software Developer",
     period: "Aug 2015 - Dec 2017 · 2 yrs 5 mos",
-    exp: [""],
+    exp: [
+      "Develop Java Backend project using Java, Spring Framework, Groovy",
+      "Develop new solutions from requirements and resolved troubleshooting production issues",
+    ],
   },
 ];
 
-const skill = [];
+const skill = [
+  "Java",
+  "SpringBoot",
+  "TypeScript",
+  "JavaScript",
+  "Next.js",
+  "React.js",
+  "HTML",
+  "CSS",
+];
 
 export default function Home() {
   const [visible, setVisible] = useState(false);
@@ -92,7 +108,7 @@ export default function Home() {
     );
   };
 
-  const Experience = () => {
+  const SectionExperience = () => {
     return (
       <section id="experience" className="nes-container with-title">
         <h3 className="title">Experience</h3>
@@ -107,6 +123,44 @@ export default function Home() {
             />
           );
         })}
+      </section>
+    );
+  };
+
+  const WrapperSkill = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    row-gap: 16px;
+    column-gap: 16px;
+  `;
+
+  const SectionSkill = () => {
+    return (
+      <section id="home" className="nes-container with-title">
+        <h3 className="title">Skill</h3>
+        <WrapperSkill className="lists" style={{}}>
+          {skill.map((v, index) => {
+            return (
+              <p key={index} className="nes-badge">
+                <span className="is-dark">{v}</span>
+              </p>
+            );
+          })}
+
+          {/* <ul className="nes-list is-circle">
+            {skill.map((v, index) => {
+              return (
+                <li key={index}>
+                  <a href="#" className="nes-badge">
+                    <span className="is-dark">{v}</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul> */}
+        </WrapperSkill>
+        <br />
       </section>
     );
   };
@@ -149,9 +203,18 @@ export default function Home() {
           rowGap: "36px",
         }}
       >
-        <SectionHome />
-        <SectionAbout />
-        <Experience />
+        <div id="home">
+          <SectionHome />
+        </div>
+        <div id="about">
+          <SectionAbout />
+        </div>
+        <div id="exp">
+          <SectionExperience />
+        </div>
+        <div id="skill">
+          <SectionSkill />
+        </div>
       </div>
     </Layout>
   );

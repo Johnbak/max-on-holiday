@@ -14,7 +14,7 @@ export const PrimaryNav = styled.nav`
     justify-content: space-between;
   }
 `;
-export const MenuLink = styled.a`
+export const MenuLink = styled.p`
   color: #fff;
   display: flex;
   align-items: center;
