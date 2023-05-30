@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Menu, PrimaryNav, MenuLink, Hamburger } from "./Nav";
-import { useOutsideAlerter } from "../utils";
+import { scrollToDiv, useOutsideAlerter } from "../utils";
 import styled from "styled-components";
 
 const Navbar = () => {
@@ -47,14 +47,6 @@ const Navbar = () => {
         2px 12px, 4px 12px, 6px 12px, 8px 12px, 2px 14px, 4px 14px;
     }
   `;
-
-  const scrollToDiv = (divId: string) => {
-    const divElement = document.getElementById(divId);
-    if (divElement) {
-      const offset = divElement.offsetTop - 120; //100px is Navbar size
-      window.scrollTo({ top: offset, behavior: "smooth" });
-    }
-  };
 
   return (
     <PrimaryNav>

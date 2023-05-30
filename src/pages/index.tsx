@@ -1,6 +1,8 @@
 import Collapse from "@/component/Content/Collapse";
+import Footer from "@/component/Footer";
 import Navbar from "@/component/Menu/NavElement";
 import { Container, Layout } from "@/component/layout.styled";
+import { scrollToDiv } from "@/component/utils";
 import { useEffect, useState } from "react";
 
 import styled from "styled-components";
@@ -64,15 +66,16 @@ export default function Home() {
   const [visible, setVisible] = useState(false);
   const message =
     "Hi , I'm not a Pokémon trainer , but I'm a software developer.";
+
   useEffect(() => {
-    // const handleScroll = () => {
-    //   const scrollPosition = window.scrollY;
-    //   setVisible(scrollPosition >= 100 && scrollPosition <= 800);
-    // };
-    // window.addEventListener("scroll", handleScroll);
-    // return () => {
-    //   window.removeEventListener("scroll", handleScroll);
-    // };
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setVisible(scrollPosition >= 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const SectionHome = () => {
@@ -187,8 +190,49 @@ export default function Home() {
 
   const IconMasqot = styled.i``;
 
+  const ButtonToTop = styled.button<{ visible: boolean }>`
+    position: fixed;
+    bottom: ${(props) => (props.visible ? 60 : -60)}px;
+    right: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+    z-index: 1;
+    transform: rotate(90deg);
+  `;
+
+  const IconToTop = styled.i<{ visible: boolean }>`
+    position: fixed;
+    bottom: ${(props) => (props.visible ? 60 : -60)}px;
+    right: 2rem;
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+        14 0,
+      pointer; //TODO::Refactor
+    transition: all 0.3s ease;
+    z-index: 1;
+
+    transform-style: preserve-3d;
+    animation: scaleAnimation 1s infinite;
+
+    @keyframes scaleAnimation {
+      0% {
+        transform: scale(3); /* Maintain the initial scaling */
+      }
+      50% {
+        transform: scale(2.8); /* Apply intermediate scaling */
+      }
+      100% {
+        transform: scale(3); /* Revert back to the initial scaling */
+      }
+    }
+  `;
+
   return (
     <Layout>
+      <IconToTop
+        visible={visible}
+        className="nes-icon coin is-medium"
+        onClick={() => scrollToDiv("home")}
+      ></IconToTop>
       <Navbar />
       {/* <WrapSlideMasqot
         className="nes-octocat animate"
@@ -216,6 +260,7 @@ export default function Home() {
           <SectionSkill />
         </div>
       </div>
+      <Footer />
     </Layout>
   );
 }
