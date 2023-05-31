@@ -24,10 +24,13 @@ export const useOutsideAlerter = (ref: any, refBlock: any, callback: any) => {
   }, [ref, callback]);
 };
 
-export const scrollToDiv = (divId: string) => {
+export const scrollToDiv = (divId: string, callback?: any) => {
   const divElement = document.getElementById(divId);
   if (divElement) {
     const offset = divElement.offsetTop - 120; //100px is Navbar size
     window.scrollTo({ top: offset, behavior: "smooth" });
+  }
+  if (callback) {
+    callback();
   }
 };

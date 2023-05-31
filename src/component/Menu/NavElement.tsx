@@ -57,10 +57,18 @@ const Navbar = () => {
           }}
         >
           <div className="lists">
-            <NavItem onClick={() => scrollToDiv("home")}>Home</NavItem>
-            <NavItem onClick={() => scrollToDiv("about")}>About</NavItem>
-            <NavItem onClick={() => scrollToDiv("exp")}>Experience</NavItem>
-            <NavItem onClick={() => scrollToDiv("skill")}>Skill</NavItem>
+            <NavItem onClick={() => scrollToDiv("home", handleHamburgerClick)}>
+              Home
+            </NavItem>
+            <NavItem onClick={() => scrollToDiv("about", handleHamburgerClick)}>
+              About
+            </NavItem>
+            <NavItem onClick={() => scrollToDiv("exp", handleHamburgerClick)}>
+              Experience
+            </NavItem>
+            <NavItem onClick={() => scrollToDiv("skill", handleHamburgerClick)}>
+              Skill
+            </NavItem>
           </div>
         </div>
         {/* <div
