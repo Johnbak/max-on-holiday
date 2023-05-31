@@ -122,7 +122,7 @@ export default function Home() {
 
   const SectionExperience = () => {
     return (
-      <section id="experience" className="nes-container with-title">
+      <WrapperExp id="experience" className="nes-container with-title">
         <h3 className="title">Experience</h3>
         {exp.map((v, index) => {
           return (
@@ -136,7 +136,7 @@ export default function Home() {
             />
           );
         })}
-      </section>
+      </WrapperExp>
     );
   };
 
@@ -208,6 +208,13 @@ export default function Home() {
     </Layout>
   );
 }
+
+const WrapperExp = styled.section`
+  padding: 1.5rem 1rem;
+  @media screen and (min-width: 769px) {
+    padding: 1.5rem 2rem;
+  }
+`;
 
 const FlashSpan = styled.span`
   animation: flashing 1s infinite;
