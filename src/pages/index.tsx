@@ -1,4 +1,5 @@
 import Collapse from "@/component/Content/Collapse";
+import { Typography } from "@/component/Content/Text";
 import Footer from "@/component/Footer";
 import Navbar from "@/component/Menu/NavElement";
 import { Container, Layout } from "@/component/layout.styled";
@@ -7,12 +8,12 @@ import { useEffect, useState } from "react";
 
 import styled from "styled-components";
 
-//TODO :: Add DATA
 const exp = [
   {
     companyName: "BOP Company Limited",
     position: "Software Developer",
     period: "Jan 2021 - Present",
+    time: "",
     exp: [
       "Converting UX/UI requirements into usable code",
       "Collaborate with UX designers and back-end developers to implement features and fix",
@@ -24,7 +25,8 @@ const exp = [
   {
     companyName: "Bluecode Global Company Limited",
     position: "Software Developer",
-    period: "Jan 2020 - Dec 2020 · 1 yr",
+    period: "Jan 2020 - Dec 2020 ",
+    time: "· 1 yr",
     exp: [
       "Developed RESTful API applications using Python.",
       "Developed a mobile application in Java that schedules tasks using WorkManager to run in the background",
@@ -34,7 +36,8 @@ const exp = [
   {
     companyName: "Vertice International Co. Ltd.",
     position: "Software Developer",
-    period: "Feb 2018 - Dec 2019 · 1 yr 11 mos",
+    period: "Feb 2018 - Dec 2019",
+    time: "· 1 yr 11 mos",
     exp: [
       "Responsible for developing a Java Spring Boot API that follows the business flow",
       "Design and consistently adhere to good programming practices for the project.",
@@ -43,7 +46,8 @@ const exp = [
   {
     companyName: "Aware Group",
     position: "Java Software Developer",
-    period: "Aug 2015 - Dec 2017 · 2 yrs 5 mos",
+    period: "Aug 2015 - Dec 2017",
+    time: "· 2 yrs 5 mos",
     exp: [
       "Develop Java Backend project using Java, Spring Framework, Groovy",
       "Develop new solutions from requirements and resolved troubleshooting production issues",
@@ -82,7 +86,12 @@ export default function Home() {
     return (
       <section id="home" className="nes-container with-title">
         <h3 className="title">Hello</h3>
-        <p className="nes-balloon from-left nes-pointer">{message}</p>
+        <div className="nes-balloon from-left nes-pointer">
+          <Typography>
+            {message}
+            <FlashSpan>|</FlashSpan>
+          </Typography>
+        </div>
         <br />
         <i className="nes-ash"></i>
       </section>
@@ -93,7 +102,7 @@ export default function Home() {
     return (
       <section id="home" className="nes-container with-title">
         <h3 className="title">About</h3>
-        <p
+        <Typography
           className=""
           style={{
             wordBreak: "break-word",
@@ -104,8 +113,8 @@ export default function Home() {
           <br />
           As a Software Developer based in Bangkok,
           <br />I have experience in Java Spring Boot, Python (Flask),
-          React/Next.js, Javascript, and TypeScript
-        </p>
+          React/Next.js, Javascript, and TypeScript.
+        </Typography>
         <br />
       </section>
     );
@@ -123,20 +132,13 @@ export default function Home() {
               position={v.position}
               period={v.period}
               exp={v.exp}
+              time={v.time}
             />
           );
         })}
       </section>
     );
   };
-
-  const WrapperSkill = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    row-gap: 16px;
-    column-gap: 16px;
-  `;
 
   const SectionSkill = () => {
     return (
@@ -167,64 +169,6 @@ export default function Home() {
       </section>
     );
   };
-
-  const WrapSlideMasqot = styled.i<{ visible: boolean }>`
-    position: fixed;
-    top: 160px;
-
-    right: ${(props) => (props.visible ? 10 : -100)}px;
-    z-index: 999;
-    display: flex;
-    height: 100px;
-    color: #333;
-    text-decoration: none;
-    /* transition: opacity 0.5s ease-in-out; */
-    /* opacity: ${(props) => (props.visible ? 1 : 0)}; */
-  `;
-
-  const ListCustom = styled.li`
-    &::before {
-      color: #dcdcdc !important;
-    }
-  `;
-
-  const IconMasqot = styled.i``;
-
-  const ButtonToTop = styled.button<{ visible: boolean }>`
-    position: fixed;
-    bottom: ${(props) => (props.visible ? 60 : -60)}px;
-    right: 2rem;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
-    transition: all 0.3s ease;
-    z-index: 1;
-    transform: rotate(90deg);
-  `;
-
-  const IconToTop = styled.i<{ visible: boolean }>`
-    position: fixed;
-    bottom: ${(props) => (props.visible ? 60 : -60)}px;
-    right: 2rem;
-    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
-        14 0,
-      pointer; //TODO::Refactor
-    transition: all 0.3s ease;
-    z-index: 1;
-
-    transform-style: preserve-3d;
-    animation: scaleAnimation 1s infinite;
-
-    @keyframes scaleAnimation {
-      0% {
-        transform: scale(3); /* Maintain the initial scaling */
-      }
-      50% {
-        transform: scale(2.8); /* Apply intermediate scaling */
-      }
-      100% {
-        transform: scale(3); /* Revert back to the initial scaling */
-      }
-    }
-  `;
 
   return (
     <Layout>
@@ -264,3 +208,82 @@ export default function Home() {
     </Layout>
   );
 }
+
+const FlashSpan = styled.span`
+  animation: flashing 1s infinite;
+  @keyframes flashing {
+    0%,
+    100% {
+      color: black; /* Adjust the color for the flashing effect */
+    }
+    50% {
+      color: white; /* Adjust the color for the flashing effect */
+    }
+  }
+`;
+
+const WrapperSkill = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  row-gap: 16px;
+  column-gap: 16px;
+`;
+
+const WrapSlideMasqot = styled.i<{ visible: boolean }>`
+  position: fixed;
+  top: 160px;
+
+  right: ${(props) => (props.visible ? 10 : -100)}px;
+  z-index: 999;
+  display: flex;
+  height: 100px;
+  color: #333;
+  text-decoration: none;
+  /* transition: opacity 0.5s ease-in-out; */
+  /* opacity: ${(props) => (props.visible ? 1 : 0)}; */
+`;
+
+const ListCustom = styled.li`
+  &::before {
+    color: #dcdcdc !important;
+  }
+`;
+
+const IconMasqot = styled.i``;
+
+const ButtonToTop = styled.button<{ visible: boolean }>`
+  position: fixed;
+  bottom: ${(props) => (props.visible ? 60 : -60)}px;
+  right: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  z-index: 1;
+  transform: rotate(90deg);
+`;
+
+const IconToTop = styled.i<{ visible: boolean }>`
+  position: fixed;
+  bottom: ${(props) => (props.visible ? 60 : -60)}px;
+  right: 2rem;
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+      14 0,
+    pointer; //TODO::Refactor
+  transition: all 0.3s ease;
+  z-index: 1;
+
+  transform-style: preserve-3d;
+  animation: scaleAnimation 1s infinite;
+
+  @keyframes scaleAnimation {
+    0% {
+      transform: scale(3); /* Maintain the initial scaling */
+    }
+    50% {
+      transform: scale(2.8); /* Apply intermediate scaling */
+    }
+    100% {
+      transform: scale(3); /* Revert back to the initial scaling */
+    }
+  }
+`;

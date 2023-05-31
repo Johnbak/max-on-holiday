@@ -1,39 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { Typography } from "./Text";
 
 interface ICollapse {
   companyName: string;
   position: string;
   period: string;
   exp: string[];
+  time: string;
 }
 
 const Collapse = (props: ICollapse) => {
-  const { companyName, position, period, exp } = props;
+  const { companyName, position, period, exp, time } = props;
   const [openCollapse, setOpenCollapse] = useState(false);
-
-  // Change Bullet Color
-  const ListCustom = styled.li`
-    &::before {
-      color: #dcdcdc !important;
-      top: calc(0%) !important; //move bullet to top
-    }
-  `;
-
-  const ButtonOpen = styled.button`
-    position: absolute;
-    bottom: 0px;
-    right: -4px;
-  `;
-
-  const WrapperDescription = styled.div`
-    background: #1e1e1e;
-    color: #dcdcdc;
-    font-size: 15px;
-    line-height: 1.5;
-    padding: 1.5rem;
-  `;
-
   return (
     <div
       style={{
@@ -42,9 +21,10 @@ const Collapse = (props: ICollapse) => {
     >
       <section id="experience" className="nes-container with-title">
         <section style={{ paddingBottom: "24px" }}>
-          <p>{companyName}</p>
-          <p>{position}</p>
-          <p>{period}</p>
+          <WrapperCompany>{companyName}</WrapperCompany>
+          <Typography>{position}</Typography>
+          <Typography>{period}</Typography>
+          <Typography>{time}</Typography>
           <ButtonOpen
             type="button"
             className="nes-btn is-primary showcode"
@@ -68,7 +48,11 @@ const Collapse = (props: ICollapse) => {
             <div className="lists">
               <ul className="nes-list is-disc">
                 {exp.map((v, index) => {
-                  return <ListCustom key={index}>{v}</ListCustom>;
+                  return (
+                    <ListCustom key={index}>
+                      <Typography>{v}</Typography>
+                    </ListCustom>
+                  );
                 })}
               </ul>
             </div>
@@ -79,3 +63,30 @@ const Collapse = (props: ICollapse) => {
   );
 };
 export default Collapse;
+
+// Change Bullet Color
+const ListCustom = styled.li`
+  &::before {
+    color: #dcdcdc !important;
+    top: calc(0%) !important; //move bullet to top
+  }
+`;
+
+const ButtonOpen = styled.button`
+  position: absolute;
+  bottom: 0px;
+  right: -4px;
+`;
+
+const WrapperDescription = styled.div`
+  background: #1e1e1e;
+  color: #dcdcdc;
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 1.5rem;
+`;
+
+const WrapperCompany = styled.p`
+  color: red;
+  font-weight: bold;
+`;

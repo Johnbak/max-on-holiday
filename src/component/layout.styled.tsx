@@ -1,10 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 //Style Only
 
 export const Layout = styled.div`
-    padding : 20px;
-    
+  padding: 20px;
 `;
 
 export const Container = styled.div`

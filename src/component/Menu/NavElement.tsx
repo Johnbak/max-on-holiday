@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Menu, PrimaryNav, MenuLink, Hamburger } from "./Nav";
 import { scrollToDiv, useOutsideAlerter } from "../utils";
 import styled from "styled-components";
@@ -20,33 +20,6 @@ const Navbar = () => {
   const handleHamburgerClick = () => {
     setHamburger((prevHamburger) => !prevHamburger);
   };
-
-  const NavItem = styled.p`
-    position: relative;
-    &:hover {
-      &:after {
-        // Drill to after when stage hover(p) set display block to after(< Arrow)
-        display: block;
-      }
-    }
-    &:after {
-      //Arrow
-      display: none;
-      position: absolute;
-      bottom: 3px;
-      right: -70px;
-      content: "";
-      order: 2;
-      transform: rotate(180deg);
-      width: 2px;
-      height: 2px;
-      color: white;
-      box-shadow: 2px 2px, 4px 2px, 2px 4px, 4px 4px, 6px 4px, 8px 4px, 2px 6px,
-        4px 6px, 6px 6px, 8px 6px, 10px 6px, 2px 8px, 4px 8px, 6px 8px, 8px 8px,
-        10px 8px, 12px 8px, 2px 10px, 4px 10px, 6px 10px, 8px 10px, 10px 10px,
-        2px 12px, 4px 12px, 6px 12px, 8px 12px, 2px 14px, 4px 14px;
-    }
-  `;
 
   return (
     <PrimaryNav>
@@ -109,3 +82,30 @@ const Navbar = () => {
   );
 };
 export default Navbar;
+
+const NavItem = styled.p`
+  position: relative;
+  &:hover {
+    &:after {
+      // Drill to after when stage hover(p) set display block to after(< Arrow)
+      display: block;
+    }
+  }
+  &:after {
+    //Arrow
+    display: none;
+    position: absolute;
+    bottom: 3px;
+    right: -70px;
+    content: "";
+    order: 2;
+    transform: rotate(180deg);
+    width: 2px;
+    height: 2px;
+    color: white;
+    box-shadow: 2px 2px, 4px 2px, 2px 4px, 4px 4px, 6px 4px, 8px 4px, 2px 6px,
+      4px 6px, 6px 6px, 8px 6px, 10px 6px, 2px 8px, 4px 8px, 6px 8px, 8px 8px,
+      10px 8px, 12px 8px, 2px 10px, 4px 10px, 6px 10px, 8px 10px, 10px 10px,
+      2px 12px, 4px 12px, 6px 12px, 8px 12px, 2px 14px, 4px 14px;
+  }
+`;

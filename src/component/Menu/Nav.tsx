@@ -5,7 +5,7 @@ export const PrimaryNav = styled.nav`
   justify-content: flex-end;
   background: #212529;
   display: flex;
-  height: 100px;
+  height: 90px;
   padding: 0 16px;
   position: sticky;
   top: 0;
